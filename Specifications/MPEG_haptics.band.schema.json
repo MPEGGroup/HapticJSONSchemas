@@ -1,0 +1,55 @@
+{
+    "$schema" : "http://json-schema.org/draft-04/schema",
+    "title" : "MPEG_haptics_band",
+    "type" : "object",
+    "properties" : {
+        "band_type": {
+            "type": "string",
+            "enum": ["WaveletWave", "VectorialWave", "Curve", "Transient"],
+            "description": "Specifies the type of data contained in the band"
+        },
+        "priority": {
+            "type": "integer",
+            "description": "Importance of the band",
+            "minimum": 0,
+            "default": 255
+        },
+        "curve_type": {
+            "type": "string",
+            "enum": ["Linear", "Cubic", "Akima", "Bezier", "BSpline", "Unknown"],
+            "description": "Specifies the interpolation function used if the current band_type is Curve"
+        },
+        "block_length": {
+            "type": "integer",
+            "description": "Duration of a wavelet haptic effect",
+            "minimum": 16
+        },
+        "lower_frequency_limit": {
+            "type": "number",
+            "description": "Lower frequency limit of the band",
+            "minimum": 0.0,
+            "maximum": 10000.0
+        },
+        "upper_frequency_limit": {
+            "type": "number",
+            "description": "Upper frequency limit of the band",
+            "minimum": 0.0,
+            "maximum": 10000.0
+        },
+        "effects": {
+            "type": "array",
+            "description": "List of streams",
+            "items": {
+                "type": "object",
+                "$ref": "MPEG_haptics.effect.schema.json"
+            }
+        }
+    },
+    "required": [
+        "band_type",
+        "lower_frequency_limit",
+        "upper_frequency_limit",
+        "effects"
+    ]
+}
+

@@ -1,0 +1,86 @@
+{
+    "$schema" : "http://json-schema.org/draft-04/schema",
+    "title" : "MPEG_haptics_reference_device",
+    "type" : "object",
+    "properties" : {
+        "id": {
+            "type": "integer",
+            "description": "Id of the device",
+            "minimum": 1
+        },
+        "name": {
+            "type": "string",
+            "description": "Name of the device"
+        },
+        "body_part_mask": {
+            "type": "integer",
+            "description": "Binary mask specifying the location of the device or actuator on the body",
+            "minimum": 0,
+			"maximum": 4294967295
+        },
+        "maximum_frequency": {
+            "type": "number",
+            "description": "Maximum frequency of the actuator",
+            "minimum": 0
+        },
+        "minimum_frequency": {
+            "type": "number",
+            "description": "Minimum frequency of the actuator",
+            "minimum": 0
+        },
+        "resonance_frequency": {
+            "type": "number",
+            "description": "Resonance frequency of the actuator",
+            "minimum": 0
+        },
+        "maximum_amplitude": {
+            "type": "number",
+            "description": "Maximum acceleration of the device. This is also referred to as the maximum amplitude",
+            "minimum": 0
+        },
+        "impedance": {
+            "type": "number",
+            "description": "Impedance of the actuator",
+            "minimum": 0.0
+        },
+        "maximum_voltage": {
+            "type": "number",
+            "description": "Maximum voltage of the actuator",
+            "minimum": 0
+        },
+        "maximum_current": {
+            "type": "number",
+            "description": "Maximum current of the actuator",
+            "minimum": 0.0
+        },
+        "maximum_displacement": {
+            "type": "number",
+            "description": "Maximum displacement of the actuator (mm)",
+            "minimum": 0
+        },
+        "weight": {
+            "type": "number",
+            "description": "Weight of the device in Kilograms",
+            "minimum": 0
+        },
+        "size": {
+            "type": "number",
+            "description": "Size of the device. Typically, this refers to the diameter of the actuator.",
+            "minimum": 0
+        },
+        "custom": {
+            "type": "number",
+            "description": "Additional custom data."
+        },
+        "type": {
+            "type": "string",
+            "enum": ["LRA", "VCA", "ERM", "Piezo", "Unknown"],
+            "description": "Type of motor of the actuator"
+        }
+    },
+    "required": [
+        "id",
+        "name"
+    ]
+}
+

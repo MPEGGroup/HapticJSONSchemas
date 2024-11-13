@@ -1,0 +1,30 @@
+{
+    "$schema" : "http://json-schema.org/draft-04/schema",
+    "title" : "MPEG_haptics_vector",
+    "type" : "object",
+    "properties" : {
+        "X": {
+            "type": "integer",
+            "description": "Right direction of the basis",
+			"minimum":-127,
+			"maximum":127
+        },
+        "Y": {
+            "type": "integer",
+            "description": "Up direction of the basis",
+			"minimum":-127,
+			"maximum":127
+        },
+        "Z": {
+            "type": "integer",
+            "description": "Forward direction of the basis",
+			"minimum":-127,
+			"maximum":127
+        }
+    },
+    "required": [
+        "X",
+        "Y",
+        "Z"
+    ]
+}

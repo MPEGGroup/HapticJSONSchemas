@@ -1,0 +1,64 @@
+{
+    "$schema" : "http://json-schema.org/draft-04/schema",
+    "title" : "MPEG_haptics_effect",
+    "type" : "object",
+    "properties" : {
+        "id": {
+            "type": "integer",
+            "description": "Unique ID of an effect. This attribute is only required for library effects and “Reference” effects. For “Reference” effects, it corresponds to the ID of the library effect being referenced.",
+            "minimum": 0
+        },
+        "effect_type": {
+            "type": "string",
+            "enum": ["Basis", "Composite", "Reference"],
+            "description": "Indicates the type of haptic effect. Effect-type value equals one of: “Basis”, “Composite” and “Reference”."
+        },
+        "semantic_keywords": {
+            "type": "string",
+            "description": "Semantic keywords included with the effect."
+        },
+        "position": {
+            "type": "integer",
+            "description": "Indicates the temporal or spatial position of the effect. In the case of temporal, position/timescale is the temporal position in seconds.",
+            "minimum": 0
+        },
+        "phase": {
+            "type": "number",
+            "description": "Phase of the effect",
+            "minimum": 0.0,
+            "maximum": 6.28318,
+            "default": 0
+        },
+        "base_signal":{
+            "type": "string",
+            "enum": ["Sine", "Square", "Triangle", "SawToothUp", "SawToothDown"],
+            "description": "Indicates the type of the waveform signal. This property is required for vectorial wave bands.",
+            "default": "Sine"
+        },
+        "composition": {
+            "type": "array",
+            "items":{
+                "effect":{
+                    "type": "object", 
+                    "$ref": "MPEG_haptics.effect.schema.json"
+                } 
+            }
+        },
+        "keyframes": {
+            "type": "array",
+            "description": "List of keyframes. This property is required for basis effects. If the keyframes array is empty, the effect does not contain haptic data.",
+            "items": {
+                "type": "object",
+                "$ref": "MPEG_haptics.keyframe.schema.json"
+            }
+        },
+        "wavelet_stream":{
+            "type": "string",
+            "description": "Base64 encoding of the encoded wavelet stream. This property is defined only in WaveletWave bands."
+        }
+    },
+    "required": [
+        "effect_type"
+    ]
+}
+

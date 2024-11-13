@@ -1,0 +1,32 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "MPEG_haptics_avatar",
+    "type": "object",
+    "description": "A haptic avatar.",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "description": "ID for the avatar description (one may have one mesh resolution per type of haptic signal).",
+            "minimum": 1
+        },
+        "lod": {
+            "type": "integer",
+            "description": "Number specifying the level of details of the avatar: 0, 1 or 2 for respectively low, average and high resolution. It allows to use more or less complex representations.",
+            "minimum": 0
+        },
+        "type": {
+            "type": "string",
+            "enum": ["Vibration", "Pressure", "Temperature", "Custom"],
+            "description": "Specifies the type of haptic perception represented by the avatar.  Values can be Vibration, Pressure, Temperature or Custom. For Custom meshes, the mesh is provided as a companion file. "
+        },
+        "mesh":{
+            "type": "string",
+            "description": "URI path to the custom mesh file. The URI must follow the syntax defined in RFC3986."
+        }
+    },
+    "required": [
+        "id",
+        "lod",
+        "type"
+    ]
+}

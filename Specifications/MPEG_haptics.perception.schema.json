@@ -1,0 +1,80 @@
+  {
+    "$schema" : "http://json-schema.org/draft-04/schema",
+    "title" : "MPEG_haptics_perception",
+    "type" : "object",
+    "properties" : {
+        "id": {
+            "type": "integer",
+            "description": "ID of the perception.",
+            "minimum": 0
+        },
+        "perception_modality": {
+            "type": "string",
+            "enum": ["Pressure", "Acceleration", "Velocity", "Position", "Temperature", "Vibrotactile", "Water", "Wind", "Force", "Electrotactile", "Vibrotactile Texture", "Stiffness", "Friction", "Humidity", "User-defined Temporal", "User-defined Spatial", "Other"],
+            "description": "Type of perception."
+        },
+        "description": {
+            "type": "string",
+            "description": "The user-defined description of the haptic perception."
+        },
+        "priority": {
+            "type": "integer",
+            "description": "Importance of the perception",
+            "minimum": 0,
+            "default": 255
+        },
+        "avatar_id": {
+            "type": "integer",
+            "description": "Unique ID of the associated avatar body model.",
+            "minimum": 0
+        },
+        "effect_library": {
+            "type": "array",
+            "description": "List of predefined effects to be referenced in the channels",
+            "items": {
+                "type": "object",
+                "$ref": "MPEG_haptics.effect.schema.json"
+            }
+        },
+        "semantic_scheme": {
+            "type": "string",
+            "description": "Scheme used for the semantic description of effects."
+        },
+        "reference_devices": {
+            "type": "array",
+            "description": "List of all devices or actuators used in the signal.",
+            "items": {
+                "type": "object",
+                "$ref": "MPEG_haptics.reference_device.schema.json"
+            }
+        },
+        "channels": {
+            "type": "array",
+            "description": "List of channels.",
+            "items": {
+                "type": "object",
+                "$ref": "MPEG_haptics.channel.schema.json"
+            },
+			"minItems": 1
+        },
+        "unit_exponent": {
+            "type": "integer",
+            "description": "Refers to the 10^x exponent for the SI unit identifying the space of representation of the independent variable",
+            "default": -3
+        },
+        "perception_unit_exponent": {
+            "type": "integer",
+            "description": "Refers to the 10^x exponent for the SI unit measure of the dependent variable",
+            "default": 0
+        }
+    },
+    "required": [
+        "id",
+        "perception_modality",
+        "description",
+        "avatar_id",
+        "effect_library",
+        "channels"
+    ]
+}
+

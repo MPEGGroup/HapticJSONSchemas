@@ -1,0 +1,104 @@
+{
+    "$schema" : "http://json-schema.org/draft-04/schema",
+    "title" : "MPEG_haptics_channel",
+    "type" : "object",
+    "properties" : {
+        "id": {
+            "type": "integer",
+            "description": "Channel id",
+            "minimum": 0
+        },
+        "description": {
+            "type": "string",
+            "description": "Channel description"
+        },
+        "priority": {
+            "type": "integer",
+            "description": "Importance of the channel",
+            "minimum": 0,
+            "default": 255
+        },
+        "reference_device_id": {
+            "type": "integer",
+            "description": "Id of the associated device",
+            "minimum": 0
+        },
+        "gain": {
+            "type": "number",
+            "description": "Gain",
+            "minimum": 0
+        },
+        "mixing_coefficient": {
+            "type": "number",
+            "description": "Mixing weight",
+            "minimum": 0
+        },
+        "body_part_mask": {
+            "type": "integer",
+            "description": "Binary mask specifying body parts on which to apply the effect",
+            "minimum": 0,
+            "maximum": 4294967295,
+            "default": 0
+        },
+        "actuator_resolution": {
+            "type": "object",
+            "$ref": "MPEG_haptics.vector.schema.json",
+            "description": "Actuator map on the body part target used for designing the haptic experience",
+            "minimum": 0
+        },
+        "body_part_target": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "enum": ["Unknown","All","Upper","Lower","Right","Left","Front","Back","Arm","Head","Chest","Waist","Leg","Upper-arm","Forearm","Hand","Crane","Neck","Thigh","Calf","Foot","Palm","Finger","Sole","Toe","Thumb","Index","Middle","Ring","Pinky","Hallux","Index-Toe","Middle-Toe","Ring-Toe","Pinky-Toe","First Phalanx","Second Phalanx","Third Phalanx","Minus","Plus"]
+            },
+            "description": "Semantic command targeting one or multiple body part on the human body"
+        },
+        "actuator_target": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "$ref": "MPEG_haptics.vector.schema.json"
+            },
+            "description": "List of different actuator’s coordinates targeted on the human body part"
+        },
+        "frequency_sampling": {
+            "type": "integer",
+            "description": "Sampling frequency of the original signal.",
+            "minimum": 0
+        },
+        "sample_count": {
+            "type": "integer",
+            "description": "Sample count of the original signal.",
+            "minimum": 0
+        },
+        "vertices": {
+            "type": "array",
+            "description": "List of indices of the vertices from the avatar representation affected by the effect",
+            "items":{
+                "type": "integer"
+            }
+        },
+        "bands": {
+            "type": "array",
+            "description": "List of haptic bands",
+            "items": {
+                "type": "object",
+                "$ref": "MPEG_haptics.band.schema.json"
+            }
+        },
+        "direction": {
+            "type": "object",
+            "$ref": "MPEG_haptics.vector.schema.json",
+            "description": "Spatial direction of the channel"
+        }
+    },
+    "required": [
+        "id",
+        "description",
+        "gain",
+        "mixing_coefficient",
+        "bands"
+    ]
+}
+

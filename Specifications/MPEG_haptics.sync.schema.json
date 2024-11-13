@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "MPEG_haptics_syn",
+    "type": "object",
+    "description": "Haptic sync information.",
+    "properties": {
+        "timestamp": {
+            "type": "integer",
+            "description": "Timestamp of the haptic experience in ticks, i.e., timestamp/timescale is the timestamp in seconds.",
+            "minimum": 0
+        },
+        "timescale": {
+            "type": "integer",
+            "description": "Number of ticks per second.",
+            "minimum": 1,
+            "default": 1000
+        }
+    },
+    "required": [
+        "timestamp"
+    ]
+}

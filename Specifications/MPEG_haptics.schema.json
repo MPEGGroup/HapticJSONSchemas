@@ -1,0 +1,71 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "MPEG_haptics",
+    "type": "object",
+    "description": "A haptic experience.",
+    "properties": {
+        "version":{
+            "type": "string",
+            "description": "Year of the edition and amendment of ISO/IEC 23090-31 that this file conforms to, in the following format: XXXX or XXXX-Y, where XXXX is the year of publication and Y is the amendment number, if any. For this document, the value shall be \"2023\".",
+			"pattern": "^[0-9]{4}(-[0-9])?$"
+        },
+        "profile":{
+            "type": "string",
+            "description": "Name of the profile used to generate the encoded stream according to the profile@level definition in Annex D of the specification."
+        },
+        "level":{
+            "type": "integer",
+			"minimum":0,
+            "description": "Number of the level used to generate the encoded stream according to the profile@level definition in Annex D of the specification."
+        },
+        "date":{
+            "type": "string",
+            "format": "date-time",
+            "description": "Indicates the creation date of this haptic experience."
+        },
+        "description":{
+            "type": "string",
+            "description": "The user-defined description of this haptic experience."
+        },
+        "timescale":{
+            "type": "integer",
+			"default":1000,
+			"minimum":1,
+            "description": "Number of ticks per second."
+        },
+        "avatars": {
+            "type": "array",
+            "description": "List of haptic avatars",
+            "items": {
+                "type": "object",
+                "$ref": "MPEG_haptics.avatar.schema.json"
+            }
+        },
+        "perceptions": {
+            "type": "array",
+            "description": "List of haptic signals.",
+            "items": {
+                    "type": "object",
+                    "$ref": "MPEG_haptics.perception.schema.json"
+            },
+			"minItems": 1
+        },
+        "syncs": {
+            "type": "array",
+            "description": "List of sync data.",
+            "items": {
+                    "type": "object",
+                    "$ref": "MPEG_haptics.sync.schema.json"
+            }
+        }
+    },
+    "required": [
+        "version",
+		"profile",
+		"level",
+        "date",
+        "description",
+        "avatars",
+        "perceptions"
+    ]
+}

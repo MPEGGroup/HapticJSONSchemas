@@ -1,0 +1,27 @@
+{
+    "$schema" : "http://json-schema.org/draft-04/schema",
+    "title" : "MPEG_haptics_keyframe",
+    "type" : "object",
+    "properties" : {
+        "amplitude_modulation": {
+            "type": "number",
+            "description": "Amplitude of the keyframe.",
+            "minimum": -1.0,
+            "maximum": 1.0
+        },
+        "frequency_modulation": {
+            "type": "number",
+            "description": "Relative frequency of the keyframe.",
+            "minimum": 0.0,
+            "maximum": 10000.0
+        },
+        "relative_position": {
+            "type": "integer",
+            "description": "Relative position of the keyframe.",
+            "minimum": 0
+        }
+    },
+    "required": [
+    ]
+}
+
